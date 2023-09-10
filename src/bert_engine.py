@@ -54,36 +54,3 @@ def evaluate_model(model, dataloader, device, threshold=0.5):
 
     accuracy = accuracy_score(all_labels, all_preds)
     return accuracy
-
-# def main():
-#     config = load_config('config.json')
-
-#     tokenizer = BertTokenizer.from_pretrained(config['model_name'])
-#     train_dataset = SentimentDataset(
-#         file_path=config['train_file'],
-#         tokenizer=tokenizer,
-#         label_mapping=config['label_mapping'],
-#         max_sequence_length=config['max_sequence_length']
-#     )
-#     train_dataloader = DataLoader(train_dataset, batch_size=config['batch_size'], shuffle=True)
-
-#     model = SentimentModel(num_labels=len(config['label_mapping']), model_name=config['model_name'])
-#     optimizer = AdamW(model.parameters(), lr=config['learning_rate'])
-#     scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0, num_training_steps=len(train_dataloader) // config['batch_size'] * config['num_epochs'])
-
-#     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-#     model.to(device)
-
-#     for epoch in range(config['num_epochs']):
-#         train_loss = train_epoch(model, train_dataloader, optimizer, device)
-#         print(f"Epoch {epoch + 1}/{config['num_epochs']}: Train Loss = {train_loss:.4f}")
-
-#         # Evaluation
-#         # Load test dataset and create test dataloader similar to train
-#         # Call evaluate_model function and print accuracy
-        
-#         # Update scheduler
-#         scheduler.step()
-
-# if __name__ == '__main__':
-#     main()

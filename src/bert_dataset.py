@@ -33,22 +33,3 @@ class BertDataset(Dataset):
             'attention_mask': attention_mask,
             'label': torch.tensor(label, dtype=torch.long)
         }
-
-# def load_config(config_path):
-#     with open(config_path, 'r') as config_file:
-#         config = json.load(config_file)
-#     return config
-
-# if __name__ == '__main__':
-#     config = load_config('config.json')
-
-#     tokenizer = BertTokenizer.from_pretrained(config['model_name'])
-#     dataset = SentimentDataset(
-#         file_path=config['train_file'],
-#         tokenizer=tokenizer,
-#         label_mapping=config['label_mapping'],
-#         max_sequence_length=config['max_sequence_length']
-#     )
-
-    # Now you can use the dataset for training
-    # ... (rest of the training loop)
